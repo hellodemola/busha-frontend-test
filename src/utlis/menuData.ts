@@ -1,0 +1,1 @@
+export const menuData = ['wallets', 'prices', 'peer2peer', 'activity', 'setting']

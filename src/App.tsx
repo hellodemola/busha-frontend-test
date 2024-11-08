@@ -1,5 +1,12 @@
+import Wallet from "./components/wallet/Wallet";
+import Dashboard from "./layout/Dashboard";
+
 function App() {
-  return <h1>Busha</h1>;
+  return (
+    <Dashboard>
+      <Wallet />
+    </Dashboard>
+  )
 }
 
 export default App;
