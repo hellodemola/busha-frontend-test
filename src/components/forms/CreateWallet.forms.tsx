@@ -23,6 +23,11 @@ function CreateWalletForm ({onClose}: {onClose: () => void}) {
 
     if (isError) return (
         <div style={{ padding: '2em' }}>
+            <div style={{ display: "flex", justifyContent: 'space-between' }}>
+            <button aria-label="close button" onClick={onClose}>
+             <img src={CancelIcon} width="15em" alt="cancel" />
+            </button>
+        </div>
         <NetworkError cta={walletApi} />
     </div>)
 

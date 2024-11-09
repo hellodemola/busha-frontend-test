@@ -47,16 +47,6 @@
       "id": "tRsxUbQ",
       "deposit": true,
       "payout": true
-    },
-    {
-      "currency": "RMT",
-      "hold": "0",
-      "pending_balance": "0",
-      "balance": "0",
-      "name": "SureRemit",
-      "type": "digital",
-      "imgURL": "https://res.cloudinary.com/dwoc5fknz/image/upload/v1593000379/alice_v3/RMT.svg",
-      "id": "vLoHIuf"
     }
   ],
   "wallets": [
@@ -71,6 +61,12 @@
       "name": "Litecoin",
       "type": "digital",
       "imgURL": "https://res.cloudinary.com/dwoc5fknz/image/upload/v1593000379/alice_v3/LTC.svg"
+    },
+    {
+      "currency": "RMT",
+      "name": "SureRemit",
+      "type": "digital",
+      "imgURL": "https://res.cloudinary.com/dwoc5fknz/image/upload/v1593000379/alice_v3/RMT.svg"
     },
     {
       "currency": "USDT",
