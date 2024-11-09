@@ -1,20 +1,29 @@
 import ArrowRight from '../../assets/arrowRight.svg';
-import NairaIcon from '../../assets/icons/naira.svg';
 import { IWallet } from '../../interface/IWallet.interface';
-function EachWallet () {
+import Wallet from '../../utlis/wallet.class';
+function EachWallet ({account}: {account: IWallet}) {
+  const data = new Wallet(account);
     return (
         <div className="each-wallet">
           <div className="heading">
             <div className='flex-2'>
-            <div  className='avatar-2' >
-            <img src={NairaIcon} alt="logo" />
+            <div style={{ backgroundColor: data?.custom?.color }}  className='avatar-2' >
+            <img src={data?.custom?.icon} alt="logo" />
               </div>
             <h4>
-            Naira
+            {account?.currency}
             </h4>
             </div>
           </div>
-            <p>N 105,160,076.51</p>
+            <p>
+              {account?.type === 'fiat' && (
+                <img src={data?.custom?.icon} alt="logo" />
+              )}
+              {' '}
+              {data?.value}
+              {' '}
+              {account?.type === 'digital' && account?.currency}
+              </p>
             <div className="body">
               
             </div>

@@ -2,7 +2,7 @@ export type IName = 'Naira' | 'Ethereum' | 'Bitcoin' | 'Steller'
 
 export interface IWallet {
     id: string,
-    currency: 'NGN' | 'ETH' | 'BTC' | 'XLM',
+    currency: TCurrency,
     hold: string,
     pending_balance: number,
     balance: number,
@@ -12,4 +12,8 @@ export interface IWallet {
     imgURL: string,
 }
 
-export interface IColor { name: IName, color: string }
+type TCurrency = 'NGN' | 'ETH' | 'BTC' | 'XLM';
+
+export interface IColor { name: TCurrency, color: string }
+
+export interface ICustomize extends IColor { icon: string }
