@@ -25,13 +25,13 @@ function Wallet () {
         <div className="m-4">
           {isLoading && <Loading />}
 
-        {data &&<div id="wallet" className="grid-col-3">
+        {data && <div id="wallet" className="grid-col-3">
           {data.map((e, index) => (
           <EachWallet key={index} account={e} />
           ))}
         </div>}
 
-        {isError && <NetworkError cta={() => accountApi(true)} />}
+        {(isError && !data) && <NetworkError cta={() => accountApi(true)} />}
         </div>
 
         <Modal isOpen={isOpen}>
