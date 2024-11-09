@@ -7,6 +7,7 @@ const usePostWallet = (onClose: () => void) => {
     const [isSuccess, setIsSuccess] = useState(false);
   
   const postWallet = async () => {
+    if (!data) return;
     setIsLoading(true);
     setIsSuccess(false);
     const url = 'http://localhost:3090/accounts';
@@ -19,17 +20,17 @@ const usePostWallet = (onClose: () => void) => {
         body: newWallet
     })
     .then((response) => {
-        console.log({response})
         if (!response.ok){
            setIsError(true);
-        } else {
-            setIsSuccess(true);
-            onClose();
-        }
+        } 
+         if (response.ok){
+           setIsSuccess(true);
+           onClose();
+         }
+        
     })
-    .catch((err) => {
+    .catch(() => {
         setIsError(true);
-        throw new Error(err);
     })
     .finally(() => setIsLoading(false))
   }

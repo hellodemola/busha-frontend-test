@@ -52,9 +52,7 @@ function CreateWalletForm ({onClose}: {onClose: () => void}) {
                 isDisable={!currency} 
                 handleOnClick={postWallet}
                 >
-           
-                 {rest.isPosLoading ? (<p aria-label="Loading...">Loading...</p>): 'Create Wallet'}
-                
+                 {rest.isPosLoading ? (<span aria-label="Loading...">Loading...</span>): 'Create Wallet'}
                 </Button>
         </form>
         {rest.isPosError && (<NetworkToaster />)}

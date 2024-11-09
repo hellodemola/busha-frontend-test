@@ -1,17 +1,11 @@
 import { ICustomize, IWallet } from "../interface/IWallet.interface";
-import walletIcons from "./walletIcons";
-
+import customize from "./customize";
 class Wallet {
     wallet: IWallet;
-    private customize: ICustomize [] = [
-        {name: 'NGN', color: '#05A357', icon: walletIcons.Naira },
-        { name: 'ETH', color: '#FF9900', icon: walletIcons.Bitcoin },
-        { name: 'BTC', color: '#627EEA', icon: walletIcons.Ethereum },
-        { name: 'XLM', color: '#00aeef', icon: walletIcons.Litcoin }
-    ];
-
+    customize: ICustomize []
     constructor (wallet: IWallet) {
         this.wallet = wallet
+        this.customize = customize;
     }
 
     get custom () {

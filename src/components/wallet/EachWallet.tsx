@@ -8,7 +8,7 @@ function EachWallet ({account}: {account: IWallet}) {
           <div className="heading">
             <div className='flex-2'>
             <div style={{ backgroundColor: data?.custom?.color }}  className='avatar-2' >
-            <img src={data?.custom?.icon} alt="logo" />
+            <img src={data?.custom?.icon || account?.imgURL} alt="logo" />
               </div>
             <h4>
             {account?.name}

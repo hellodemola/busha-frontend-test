@@ -29,7 +29,9 @@ const useAccount = (isReady = false) => {
   
     useEffect(() => {
       let isMounted = true;
-      if (isMounted) accountApi(isMounted)
+      if (isMounted && !isReady) {
+        accountApi(isMounted)
+      }
       return () => {
         isMounted = false; // Cleanup function to set `isMounted` to false
       };
