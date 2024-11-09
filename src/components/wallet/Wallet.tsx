@@ -9,17 +9,21 @@ import useAccount from "../../hooks/useAccount"
 function Wallet () {
 
   const { isOpen, handleModel } = useModel();
-  const { data, isError, isLoading, accountApi } = useAccount();
-
+  const { data, isError, isLoading, accountApi } = useAccount(isOpen);
 
     return (
         <div>
         <div className="flex top align-between border-b">
         <h2>Wallets</h2>
-        <button onClick={handleModel}> + Add new wallet </button>
+        <button onClick={handleModel}>
+          <p style={{ fontWeight: 600 }}>
+           + Add new wallet
+          </p>
+        </button>
         </div>
 
         <div className="m-4">
+          {isLoading && <Loading />}
 
         {data &&<div id="wallet" className="grid-col-3">
           {data.map((e, index) => (
@@ -27,11 +31,8 @@ function Wallet () {
           ))}
         </div>}
 
-        {isLoading && <Loading />}
-        {isError && <NetworkError cta={accountApi} />}
+        {isError && <NetworkError cta={() => accountApi(true)} />}
         </div>
-
-       
 
         <Modal isOpen={isOpen}>
             <CreateWalletForm onClose={handleModel} />

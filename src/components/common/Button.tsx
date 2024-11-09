@@ -1,9 +1,9 @@
 import { IButton } from "../../interface/IButton.interface";
 
-function Button ({children, handleOnClick}: IButton) {
+function Button ({children, handleOnClick, isDisable = false, isLoading = false,}: IButton) {
  return (
-    <button className="brand-button" onClick={handleOnClick}>
-        {children}
+    <button disabled={isDisable}  className="brand-button" onClick={handleOnClick}>
+        {isLoading? 'Loading...' : children}
     </button>
  )
 };

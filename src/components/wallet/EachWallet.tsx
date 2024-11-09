@@ -11,7 +11,7 @@ function EachWallet ({account}: {account: IWallet}) {
             <img src={data?.custom?.icon} alt="logo" />
               </div>
             <h4>
-            {account?.currency}
+            {account?.name}
             </h4>
             </div>
           </div>
@@ -20,7 +20,8 @@ function EachWallet ({account}: {account: IWallet}) {
                 <img src={data?.custom?.icon} alt="logo" />
               )}
               {' '}
-              {data?.value}
+              {/* Formatted amount is not expected in test */}
+              <span>{account.balance}</span>
               {' '}
               {account?.type === 'digital' && account?.currency}
               </p>
