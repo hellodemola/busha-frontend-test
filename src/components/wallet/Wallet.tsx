@@ -6,10 +6,11 @@ import Modal from "../shared/Modal"
 import EachWallet from "./EachWallet"
 import useAccount from "../../hooks/useAccount"
 
+
 function Wallet () {
 
   const { isOpen, handleModel } = useModel();
-  const { data, isError, isLoading, accountApi } = useAccount(isOpen);
+  const {  data, isError, isLoading, accountApi } = useAccount(isOpen);
 
     return (
         <div>
@@ -25,13 +26,15 @@ function Wallet () {
         <div className="m-4">
           {isLoading && <Loading />}
 
-        {(data && data.length > 0) && <div id="wallet" className="grid-col-3">
-          {data.map((e, index) => (
-          <EachWallet key={index} account={e} />
-          ))}
-        </div>}
+        {(data && data.length > 0) && (
+          <div id="wallet" className="grid-col-3">
+            {data.map((e, index) => (
+            <EachWallet key={index} account={e} />
+            ))}
+        </div>
+      )}
 
-        {(isError && data.length < 1) && <NetworkError cta={() => accountApi(true)} />}
+        {!isLoading && (isError || data.length < 1) && <NetworkError cta={() => accountApi(true)} />}
         </div>
 
         <Modal isOpen={isOpen}>
