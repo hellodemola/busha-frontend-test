@@ -9,7 +9,7 @@ const useGetWallet = () => {
     const walletApi = async (isMounted = false) => {
       setIsLoading(true);
       try {
-        const url = 'http://localhost:3090/wallets'
+        const url = process.env.REACT_BASE_URL as string;
         const response = await fetch(url);
         if (!response.ok && isMounted){
           setIsError(true);

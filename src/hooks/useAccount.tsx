@@ -9,7 +9,7 @@ const useAccount = (isReady = false) => {
     const accountApi = async (isMounted: boolean) => {
       setIsLoading(true);
       try {
-        const url = 'http://localhost:3090/accounts'
+        const url = process.env.REACT_BASE_URL as string;
         const response = await fetch(url);
         if (!response.ok && isMounted){
           setIsError(true);

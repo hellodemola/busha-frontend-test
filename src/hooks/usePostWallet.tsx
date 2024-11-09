@@ -10,7 +10,7 @@ const usePostWallet = (onClose: () => void) => {
     if (!data) return;
     setIsLoading(true);
     setIsSuccess(false);
-    const url = 'http://localhost:3090/accounts';
+    const url = process.env.REACT_BASE_URL as string;
     const newWallet = JSON.stringify({currency: data})
     fetch(url, {
         method: 'POST',
