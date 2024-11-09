@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IWallet } from "../interface/IWallet.interface";
+import { baseUrl } from "../utlis/constant";
 
 const useGetWallet = () => {
     const [isError, setIsError ] = useState<boolean>();
@@ -9,7 +10,7 @@ const useGetWallet = () => {
     const walletApi = async (isMounted = false) => {
       setIsLoading(true);
       try {
-        const url = process.env.REACT_BASE_URL as string;
+        const url = baseUrl + '/wallets'
         const response = await fetch(url);
         if (!response.ok && isMounted){
           setIsError(true);

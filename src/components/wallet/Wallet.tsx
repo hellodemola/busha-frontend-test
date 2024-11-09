@@ -26,7 +26,7 @@ function Wallet () {
         <div className="m-4">
           {isLoading && <Loading />}
 
-        {(data && data.length > 0) && (
+        {!isLoading && (data && data.length > 0) && (
           <div id="wallet" className="grid-col-3">
             {data.map((e, index) => (
             <EachWallet key={index} account={e} />

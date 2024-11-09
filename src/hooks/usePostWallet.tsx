@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { baseUrl } from "../utlis/constant";
 
 const usePostWallet = (onClose: () => void) => {
     const [isPosError, setIsError ] = useState<boolean>(false);
@@ -10,7 +11,7 @@ const usePostWallet = (onClose: () => void) => {
     if (!data) return;
     setIsLoading(true);
     setIsSuccess(false);
-    const url = process.env.REACT_BASE_URL as string;
+    const url = baseUrl+'/wallets'
     const newWallet = JSON.stringify({currency: data})
     fetch(url, {
         method: 'POST',
