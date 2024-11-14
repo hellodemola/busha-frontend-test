@@ -9,6 +9,8 @@ $light:#f5f7fd;
 $white:#ffffff;
 $lighter: #f5f7fa;
 $green: #05A357;
+$smallScreens: 768px;
+$mediumScreens: 1300px;
 
 
 body {
@@ -29,18 +31,36 @@ main {
 
 
 .wrapper {
-  margin: 0 10em; 
+  margin: 0 10em;
+  @media only screen and (max-width: $smallScreens) {
+    margin: 0em;
+    padding: 0 1em
+  } 
+
+  @media only screen and (max-width: $mediumScreens) {
+    margin: 0em 2em;
+  } 
 }
+
 
 .container {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  @media only screen and (max-width: $smallScreens) {
+    display: block;
+  } 
 }
 
 .grid-col-3{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  @media only screen and (max-width: $smallScreens) {
+    display: block;
+  } 
+  @media only screen and (max-width: $mediumScreens) {
+    grid-template-columns: repeat(2, 1fr);
+  } 
 }
 
 .capitalize {
@@ -52,6 +72,10 @@ main {
   width: 13em;
   color: $grey;
   margin-bottom: 1px;
+
+   &.full{
+    width: 100%;
+   }
 
    &:hover{
     background-color: $light;
@@ -111,6 +135,19 @@ header {
   gap: 10px; 
 }
 
+.desktop{
+  @media only screen and (max-width: $smallScreens) {
+    display: none;
+  }
+}
+
+.mobile{
+  @media only screen and (max-width: $smallScreens) {
+    display: block;
+  }
+  display: none;
+}
+
 .bold {
   font-weight: 600;
 }
@@ -129,6 +166,7 @@ header {
   background-color: $darker;
   background: linear-gradient(-50deg, $gray, $black);
   border-radius: 0.5em;
+  margin: 1em 0;
 
   & h4{
     color: $darkGrey;

@@ -9,7 +9,9 @@ function Dashboard ({children}: IDashboard) {
         <main>
         <div className="wrapper">
         <div className="container">
+        <div className="desktop">
         <SideBar />
+        </div>
         {children}
         </div>
         </div>

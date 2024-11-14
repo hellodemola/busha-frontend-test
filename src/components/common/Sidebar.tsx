@@ -2,7 +2,7 @@ import { menuData } from "../../utlis/menuData";
 
 function SideBar () {
     return (
-        <nav className="sidebar">
+        <nav className="">
             {menuData.map((each, index) => (
              <div key={index}  className="capitalize menu">{each}</div>
             ))}

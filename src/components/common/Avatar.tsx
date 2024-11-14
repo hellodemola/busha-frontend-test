@@ -1,6 +1,6 @@
 function Avatar () {
   return (
-    <div className="flex center bold">
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }} className="bold">
     <div className='avatar'>A</div>
     <p className='bold'>Oluwatobi Akindunjoye</p>
     </div>
