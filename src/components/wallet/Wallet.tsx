@@ -5,12 +5,14 @@ import CreateWalletForm from "../forms/CreateWallet.forms"
 import Modal from "../shared/Modal"
 import EachWallet from "./EachWallet"
 import useAccount from "../../hooks/useAccount"
+import useStore from "../../hooks/useStore"
 
 
 function Wallet () {
 
   const { isOpen, handleModel } = useModel();
   const {  data, isError, isLoading, accountApi } = useAccount(isOpen);
+  const { accounts, dispatch } = useStore();
 
     return (
         <div>
@@ -28,7 +30,7 @@ function Wallet () {
 
         {!isLoading && (data && data.length > 0) && (
           <div id="wallet" className="grid-col-3">
-            {data.map((e, index) => (
+            {[...data, ...accounts.wallets].map((e, index) => (
             <EachWallet key={index} account={e} />
             ))}
         </div>
@@ -38,7 +40,7 @@ function Wallet () {
         </div>
 
         <Modal isOpen={isOpen}>
-            <CreateWalletForm onClose={handleModel} />
+            <CreateWalletForm onClose={handleModel} accounts={accounts.wallets} dispatch={dispatch} />
         </Modal>
       </div>
     )

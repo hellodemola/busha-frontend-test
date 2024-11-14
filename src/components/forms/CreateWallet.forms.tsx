@@ -5,10 +5,19 @@ import CancelIcon from '../../assets/icons/cancel.svg';
 import useGetWallet from "../../hooks/useGetWallet";
 import Button from "../common/Button";
 import usePostWallet from "../../hooks/usePostWallet";
+import { IWallet } from "../../interface/IWallet.interface";
 
-function CreateWalletForm ({onClose}: {onClose: () => void}) {
-    const { data: currency, postWallet, setData, ...rest } = usePostWallet(onClose);
+function CreateWalletForm ({onClose, accounts, dispatch}: {onClose: () => void, dispatch: any, accounts: IWallet[]}) {
     const { data, isError, isLoading, walletApi } = useGetWallet();
+    const { data: isWallet, postWallet, setData, ...rest } = usePostWallet(onClose, dispatch);
+
+    const handleSelect = (currency: string) => {
+        if (!data) return;
+        const isWallet = data.find((e) => e.currency === currency);
+        setData(isWallet)
+        return;
+    }
+
     
     if (isLoading) return (
     <div style={{ padding: '2em' }}>
@@ -42,9 +51,11 @@ function CreateWalletForm ({onClose}: {onClose: () => void}) {
             </div>
             <p>The crypto wallet will be created instantly and be available in your list of wallets.</p>
         <form>
-            <select value={currency} onChange={(e) => setData(e.target.value)} style={{ marginBottom: '2em', width: '100%', padding: '1em' }}>
+            <select value={isWallet?.currency} onChange={(e) => handleSelect(e.target.value)} style={{ marginBottom: '2em', width: '100%', padding: '1em' }}>
             <option>Select wallet</option>
-            {data?.map((each, index) => (
+            {data
+                ?.filter((e) => !accounts.find((acc) => acc.currency === e.currency))
+                ?.map((each, index) => (
                   <option 
                     key={index} 
                     value={each.currency}
@@ -54,7 +65,7 @@ function CreateWalletForm ({onClose}: {onClose: () => void}) {
             ))}
             </select>
             <Button 
-                isDisable={!currency} 
+                isDisable={!isWallet?.currency} 
                 handleOnClick={postWallet}
                 >
                  {rest.isPosLoading ? (<span aria-label="Loading...">Loading...</span>): 'Create Wallet'}

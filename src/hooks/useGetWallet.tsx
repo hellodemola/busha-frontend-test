@@ -17,7 +17,6 @@ const useGetWallet = () => {
         }
         if (isMounted && response.ok){
           const json = await response.json();
-          console.log({json})
           setData(json);
         }
       } catch (error) {

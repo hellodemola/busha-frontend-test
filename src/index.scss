@@ -96,6 +96,12 @@ main {
 header {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   padding: 1em 0;
+  background-color: $white;
+  @media only screen and (max-width: $smallScreens) {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 }
 
 .avatar{
@@ -135,6 +141,12 @@ header {
   gap: 10px; 
 }
 
+.top{
+  @media only screen and (max-width: $smallScreens) {
+    margin-top: 2em;
+  }
+}
+
 .desktop{
   @media only screen and (max-width: $smallScreens) {
     display: none;
@@ -166,7 +178,7 @@ header {
   background-color: $darker;
   background: linear-gradient(-50deg, $gray, $black);
   border-radius: 0.5em;
-  margin: 1em 0;
+  margin: 0.25em 0;
 
   & h4{
     color: $darkGrey;
